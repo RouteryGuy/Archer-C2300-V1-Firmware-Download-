@@ -42,7 +42,7 @@ If it returns -1, use 0x20200 (131584) as the standard TP-Link bootloader skip l
 After it is done, then type or paste this command:
 ```powershell
 $inFile  = ".\Your_Firmware_File"
-$outFile = ".\ArcherC2300_tp_recovery"
+$outFile = ".\ArcherC2300v1_tp_recovery"
 $skip    = 0x20200  # Replace with the exact $offset found in Step 1
 
 $bytes = [System.IO.File]::ReadAllBytes($inFile)
