@@ -30,7 +30,7 @@ Then exit the SSH Shell.
 Once you are out, open the folder of your Archer firmware file. I name it ArcherC2300v1_tp_recovery
 Type or paste this command:
 ```powershell
-$bytes = [System.IO.File]::ReadAllBytes(".\Your_Firmware_Name")
+$bytes = [System.IO.File]::ReadAllBytes(".\Your_Firmware_Name.bin")
 $text = [System.Text.Encoding]::ASCII.GetString($bytes)
 $offset = $text.IndexOf("fwup-ptn")
 "Offset in decimal: $offset | Hex: 0x{0:X}" -f $offset
@@ -41,8 +41,8 @@ Note: On most TP-Link Broadcom/SafeLoader images, this prints 131584 (0x20200) o
 If it returns -1, use 0x20200 (131584) as the standard TP-Link bootloader skip length.
 After it is done, then type or paste this command:
 ```powershell
-$inFile  = ".\Your_Firmware_File"
-$outFile = ".\ArcherC2300v1_tp_recovery"
+$inFile  = ".\Your_Firmware_File.bin"
+$outFile = ".\ArcherC2300v1_tp_recovery.bin"
 $skip    = 0x20200  # Replace with the exact $offset found in Step 1
 
 $bytes = [System.IO.File]::ReadAllBytes($inFile)
@@ -51,7 +51,7 @@ $stripped = $bytes[$skip..($bytes.Length - 1)]
 ```
 
 
-Note again: Replace "Your_Firmware_File" with the name.
+Note again: Replace "Your_Firmware_File" with the name but not .bin
 
 
 Note 2: Please do not change the name of the stripped bootloader bin file.
