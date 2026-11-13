@@ -16,7 +16,7 @@ Tftpd64 will start the transfer. Once it is done, you are successfully in OpenWR
 Next to enter OpenWRT, type 192.168.1.1
 Log into OpenWRT with root, then password root.
 Now you have wireless freedom and garbage range!
-To reveert back to stock, use the mtd functiom in the SSH terminal.
+To revert back to stock, use the mtd functiom in the SSH terminal.
 To log in, type ssh root@192.168.1.1
 It will ask you for a fingerprint thingy or whatever.
 Type yes.
@@ -27,7 +27,7 @@ cat /proc/mtd
 ```
 You will see a firmware directory.
 Then exit the SSH Shell.
-Once you are out, open the folder of your Archer firmware file. I naame it ArcherC2300v1_tp_recovery
+Once you are out, open the folder of your Archer firmware file. I name it ArcherC2300v1_tp_recovery
 Type or paste this command:
 ```powershell
 $bytes = [System.IO.File]::ReadAllBytes(".\Your_Firmware_Name")
@@ -49,7 +49,12 @@ $bytes = [System.IO.File]::ReadAllBytes($inFile)
 $stripped = $bytes[$skip..($bytes.Length - 1)]
 [System.IO.File]::WriteAllBytes($outFile, $stripped)
 ```
+
+
 Note again: Replace "Your_Firmware_File" with the name.
+
+
+Note 2: Please do not change the name of the stripped bootloader bin file.
 After that, type this command:
 ```powershell
 Get-Item $inFile, $outFile | Select-Object Name, Length
